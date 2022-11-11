@@ -1,3 +1,45 @@
+import execptions.ZlaNazwa;
+import greckie.LiteryGreckie;
+
 public class Gwiazda {
-    String nazwa
+    String Nazwa;
+    LiteryGreckie NazwaKatalogowa = LiteryGreckie.Alpha;
+
+
+
+    public Gwiazda(String nazwa, LiteryGreckie nazwaKatalogowa) throws ZlaNazwa {
+        this.setNazwa(nazwa);
+        this.setNazwaKatalogowa(nazwaKatalogowa);
+    }
+
+    public String getNazwa() {
+        return Nazwa;
+    }
+    public void setNazwa(String newName) throws ZlaNazwa {
+        if(newName.length() != 7){
+            throw new ZlaNazwa("Zla długość nazwy gwiazdy");
+        }
+        char[] doSprawdzenia = newName.toCharArray();
+        for (int i = 0; i < 7; i++){
+            if(i < 3){
+                if((byte)doSprawdzenia[i] <65 || (byte)doSprawdzenia[i] > 90){
+                    throw  new ZlaNazwa("Powinna być wielka liter na początku");
+                }
+            }else {
+                if((byte)doSprawdzenia[i] <48 || (byte)doSprawdzenia[i] > 57){
+                    throw new ZlaNazwa("4 ostatnie znaki to powinny być liczby");
+                }
+            }
+        }
+        this.Nazwa = newName;
+    }
+    public LiteryGreckie getNazwaKatalogowa() {
+        return NazwaKatalogowa;
+    }
+
+    public void setNazwaKatalogowa(LiteryGreckie nazwaKatalogowa) {
+        NazwaKatalogowa = nazwaKatalogowa;
+    }
+
 }
+
