@@ -1,8 +1,6 @@
-import execptions.ZlaMasaGwiazdy;
-import execptions.ZlaTemperatura;
+import execptions.*;
 import wartosci.LiteryGreckie;
 import wartosci.Polkula;
-import execptions.ZlaNazwa;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -56,7 +54,49 @@ public class IndeksGwiazd {
             } catch (ZlaTemperatura e) {
                 System.out.println(e.getMessage());
             }catch (InputMismatchException e){
-                System.out.println("Oczekiwanu liczby całkowitej");
+                System.out.println("Oczekiwano liczby całkowitej");
+            }
+        }
+        loop = true;
+        System.out.println("Podaj deklinacje, format współrzędnych np. xx stopni yy minut zz.zz sekund");
+        while (loop) {
+            try {
+                gwiazda.setDeklinacja(scanner.nextLine());
+                loop = false;
+            } catch (ZlaDeklinacja e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        loop = true;
+        System.out.println("Podaj rektascensje, format przykładowych danych: 12 h 30 min 23 ss");
+        while (loop) {
+            try {
+                gwiazda.setRektascensja(scanner.nextLine());
+                loop = false;
+            } catch (ZlaRektascensja e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        loop = true;
+        System.out.println("Podaj obserwowalną wielkośc gwiazdowa z zakresu od -26.74 do 15.00");
+        while (loop) {
+            try {
+                gwiazda.setObserwowanaWielkoscGwiazdowa(scanner.nextDouble());
+                loop = false;
+            } catch (ZlaObserwowanaWielkoscGwiazdowa e) {
+                System.out.println(e.getMessage());
+            }catch (InputMismatchException e){
+                System.out.println("Oczekiwano liczby zmienno przecinkowej");
+            }
+        }
+        loop =true;
+        System.out.println("Podaj odległość od gwiazdy w parsekach");
+        while (loop) {
+            try {
+                gwiazda.setAbsolutnaWielkoscGwiazdowaILataSwietlne(scanner.nextDouble());
+                loop = false;
+            }catch (InputMismatchException e){
+                System.out.println("Oczekiwano liczby zmienno przecinkowej");
             }
         }
 
@@ -73,6 +113,13 @@ public class IndeksGwiazd {
             if (suma == 22) break;
         }
         return suma;
+    }
+    public void wypisz(){
+        String a = String.format("|%-10s|","Nazwa" );
+        for (Gwiazda x: indeks
+             ) {
+            System.out.println(x.toString());
+        }
     }
 
 }
