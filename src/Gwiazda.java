@@ -1,6 +1,6 @@
-import Wartosci.Polkula;
+import wartosci.Polkula;
 import execptions.*;
-import Wartosci.LiteryGreckie;
+import wartosci.LiteryGreckie;
 
 public class Gwiazda {
     String Nazwa;
@@ -23,19 +23,20 @@ public class Gwiazda {
     public Gwiazda(String nazwa, LiteryGreckie nazwaKatalogowa, String deklinacja, String rektascensja, double obserwowanaWielkoscGwiazdowa,
                    double absolutnaWielkoscGwiazdowa, int lataSwietlne, String gwiazdozbior, Polkula polkula, double masaWSkaliSlonca, int temperatura
     ) throws ZlaNazwa, ZlaDeklinacja, ZlaRektascensja, ZlaObserwowanaWielkoscGwiazdowa, ZlaMasaGwiazdy, ZlaTemperatura {
-        setNazwa(nazwa);
-        NazwaKatalogowa = nazwaKatalogowa;
+        setNazwa(nazwa); //
+        NazwaKatalogowa = nazwaKatalogowa; //
         setDeklinacja(deklinacja);
         setRektascensja(rektascensja);
         setObserwowanaWielkoscGwiazdowa(obserwowanaWielkoscGwiazdowa);
         setAbsolutnaWielkoscGwiazdowa(absolutnaWielkoscGwiazdowa);
         setLataSwietlne(lataSwietlne);
-        setGwiazdozbior(gwiazdozbior);
-        setPolkula(polkula);
-        setMasaWSkaliSlonca(masaWSkaliSlonca);
-        setTemperatura(temperatura);
+        setGwiazdozbior(gwiazdozbior); //
+        setPolkula(polkula);//
+        setMasaWSkaliSlonca(masaWSkaliSlonca); //
+        setTemperatura(temperatura); //
 
     }
+    public Gwiazda(){}
 
     public String getNazwa() {
         return Nazwa;
