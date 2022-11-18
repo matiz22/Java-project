@@ -3,6 +3,7 @@ import execptions.*;
 import wartosci.LiteryGreckie;
 
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Gwiazda {
     String Nazwa;
@@ -16,6 +17,7 @@ public class Gwiazda {
     Polkula polkula;
     double masaWSkaliSlonca;
     int temperatura;
+    static Scanner scanner = new Scanner(System.in);
 
     public Gwiazda(String nazwa, String gwiazdozbior, Polkula polkula, double masaWSkaliSlonca, int temperatura, String deklinacja, String rektascensja, double obserwowanaWielkoscGwiazdowa, double absolutnaWielkoscGwiazdowa ,LiteryGreckie nazwaKatalogowa
 
@@ -66,7 +68,6 @@ public class Gwiazda {
             deklinacja = -1*deklinacja;
         }
     }
-
     public void setRektascensja(String czas) throws ZlaRektascensja {
         try {
             rektascensja = Integer.parseInt(czas.substring(0, czas.indexOf('h')).replace(" ", ""));
@@ -91,7 +92,6 @@ public class Gwiazda {
     public void setGwiazdozbior(String gwiazdozbior) {
         this.gwiazdozbior = gwiazdozbior;
     }
-
     public void setTemperatura(int temperatura) throws ZlaTemperatura {
         if (temperatura < 2000) {
             throw new ZlaTemperatura("Temperatura musi byc wieksza niz 2000 C");
@@ -108,21 +108,118 @@ public class Gwiazda {
             this.masaWSkaliSlonca = masaWSkaliSlonca;
         }
     }
+    public void insertNazwa(){
+        System.out.println("Podaj nazwę 3 Duże literi i 4 Cyfry np: JCJ2138");
+        boolean loop = true;
+        while (loop) {
+            try {
+                setNazwa(scanner.next());
+                loop = false;
+            } catch (ZlaNazwa e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    public void insertGwiazdozbior(){
+        System.out.println("Podaj gwiazdozbiór: ");
+        gwiazdozbior = scanner.next();
+    }
+    public void insertPolkula(){
+        System.out.println("Wybierz półkulę 1.PN, 2.PD wpisz odpowiednia cyfre");
+        boolean loop = true;
+        while (loop) {
+            try {
+                polkula = Polkula.values()[scanner.nextInt() - 1];
+                loop = false;
+            } catch (Exception e) {
+                System.out.println("Zła wartość");
+            }
+        }
+    }
+    public void insertMasaWzgledemSlonca(){
+        System.out.println("Podaj mase wzgledem słońca, min 0.1 max 50");
+        boolean loop = true;
+        while (loop) {
+            try {
+                setMasaWSkaliSlonca(scanner.nextDouble());
+                loop = false;
+            } catch (ZlaMasaGwiazdy e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    public void insertTemperatura(){
+        System.out.println("Podaj temperature min 2000");
+        boolean loop = true;
+        while (loop) {
+            try {
+                setTemperatura(scanner.nextInt());
+                loop = false;
+            } catch (ZlaTemperatura e) {
+                System.out.println(e.getMessage());
+            } catch (InputMismatchException e) {
+                System.out.println("Oczekiwano liczby całkowitej");
+            }
+        }
+    }
+    public void insertDeklinacja(){
+        System.out.println("Podaj deklinacje, format współrzędnych np. xx stopni yy minut zz.zz sekund");
+        boolean loop = true;
+        while (loop) {
+            try {
+                setDeklinacja(scanner.nextLine());
+                loop = false;
+            } catch (ZlaDeklinacja e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    public void insertRektascensja(){
+        System.out.println("Podaj rektascensje, format przykładowych danych: 12 h 30 min 23 ss");
+        boolean loop = true;
+        while (loop) {
+            try {
+                setRektascensja(scanner.nextLine());
+                loop = false;
+            } catch (ZlaRektascensja e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    public void insertObserwowanaWielkoscGwiazdowa(){
+        System.out.println("Podaj obserwowalną wielkośc gwiazdowa z zakresu od -26.74 do 15.00");
+        boolean loop = true;
+        while (loop) {
+            try {
+                setObserwowanaWielkoscGwiazdowa(scanner.nextDouble());
+                loop = false;
+            } catch (ZlaObserwowanaWielkoscGwiazdowa e) {
+                System.out.println(e.getMessage());
+            } catch (InputMismatchException e) {
+                System.out.println("Oczekiwano liczby zmienno przecinkowej");
+            }
+        }
+    }
+    public void insertAbsolutnaWielkoscGwiazdowaILataSwietlne(){
+        System.out.println("Podaj odległość od gwiazdy w parsekach");
+        boolean loop = true;
+        while (loop) {
+            try {
+                setAbsolutnaWielkoscGwiazdowaILataSwietlne(scanner.nextDouble());
+                loop = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Oczekiwano liczby zmienno przecinkowej");
+            }
+        }
+    }
+
+
+
     @Override
     public String toString() {
-        return "Gwiazda{" +
-                "Nazwa='" + Nazwa + '\'' +
-                ", NazwaKatalogowa=" + NazwaKatalogowa +
-                ", deklinacja=" + deklinacja +
-                ", rektascensja=" + rektascensja +
-                ", obserwowanaWielkoscGwiazdowa=" + obserwowanaWielkoscGwiazdowa +
-                ", absolutnaWielkoscGwiazdowa=" + absolutnaWielkoscGwiazdowa +
-                ", lataSwietlne=" + lataSwietlne +
-                ", gwiazdozbior='" + gwiazdozbior + '\'' +
-                ", polkula=" + polkula +
-                ", masaWSkaliSlonca=" + masaWSkaliSlonca +
-                ", temperatura=" + temperatura +
-                '}';
+        return String.format("|%-10s", Nazwa ) + String.format("|%-20s",NazwaKatalogowa )+ String.format("|%-20s", deklinacja )+String.format("|%-20s", rektascensja )
+                + String.format("|%-35s",obserwowanaWielkoscGwiazdowa) + String.format("|%-35s",absolutnaWielkoscGwiazdowa ) + String.format("|%-20s",lataSwietlne)
+                + String.format("|%-20s",gwiazdozbior)+ String.format("|%-10s",polkula ) + String.format("|%-20s",masaWSkaliSlonca )+ String.format("|%-20s|",temperatura);
     }
 }
 
