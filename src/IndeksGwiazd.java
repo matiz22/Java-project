@@ -1,11 +1,21 @@
 import wartosci.LiteryGreckie;
 import wartosci.Polkula;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class IndeksGwiazd {
+public class IndeksGwiazd implements java.io.Serializable {
+    public ArrayList<Gwiazda> getIndeks() {
+        return indeks;
+    }
+
+    public void setIndeks(ArrayList<Gwiazda> indeks) {
+        this.indeks = indeks;
+    }
+
     ArrayList<Gwiazda> indeks = new ArrayList<>();
     static final String naglowek = String.format("|%-10s", "Nazwa")
             + String.format("|%-20s", "Nazwa Katalogowa")
@@ -18,6 +28,25 @@ public class IndeksGwiazd {
             + String.format("|%-10s", "Polkula")
             + String.format("|%-20s", "Masa w skali slonca")
             + String.format("|%-20s|", "Temperatura");
+
+    public IndeksGwiazd() {
+    }
+
+    public void wczytajZPliku() {
+        try {
+            indeks = Serializacja.deserializeFromXML();
+        } catch (IOException e) {
+            System.out.println("Błąd pliku");
+        }
+    }
+
+    public void zapiszDoPliku() {
+        try {
+            Serializacja.serializeToXML(indeks);
+        } catch (IOException e) {
+            System.out.println("dupa");
+        }
+    }
 
     public void add() {
         Gwiazda gwiazda = new Gwiazda();
@@ -45,10 +74,10 @@ public class IndeksGwiazd {
             gwiazda.insertObserwowanaWielkoscGwiazdowa();
             gwiazda.insertAbsolutnaWielkoscGwiazdowaILataSwietlne();
             indeks.add(gwiazda);
+            czyZawiera = false;
+            System.out.println("Dodano");
         }
-
-
-    }//TODO powtorka add
+    }
 
     public void remove() {
         System.out.println("Podaj nazwe gwiazdy do usuniecia:");
@@ -89,6 +118,7 @@ public class IndeksGwiazd {
     }
 
     public void wyszukaj() {
+        System.out.println("Podaj nazwę gwiazdy:");
         String szukanaGwiazda = (new Scanner(System.in)).nextLine();
         String wyszukana = "";
         for (Gwiazda x : indeks
@@ -206,10 +236,11 @@ public class IndeksGwiazd {
     public void wyszukjaPolkula() {
         int i = -1;
         boolean loop = true;
+        System.out.println("1.PN, 2.PD");
         while (loop) {
             try {
-                System.out.println("1.PN, 2.PD");
-                i = (new Scanner(System.in)).nextInt();
+                i = (new Scanner(System.in)).nextInt() - 1;
+                if (!(i == 0 || i == 1)) throw new InputMismatchException();
                 loop = false;
             } catch (InputMismatchException e) {
                 System.out.println("Zły wybor");
@@ -247,6 +278,38 @@ public class IndeksGwiazd {
             System.out.println(masa);
         } else {
             System.out.println("Nie ma gwiazd supernovy");
+        }
+    }
+
+    public void wyszukajPoAbsolutnejWielkosciGwiazdowej() {
+        double dol = -1;
+        double gora = -1;
+        boolean loop = true;
+        while (loop) {
+            try {
+                System.out.println("Podaj dolna granice");
+                dol = (new Scanner(System.in)).nextDouble();
+                System.out.println("Podaj gorna granice");
+                gora = (new Scanner(System.in)).nextDouble();
+                loop = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Oczekiwano liczby zmienno przecinkowej");
+            }
+        }
+        String absolutna = "";
+        for (Gwiazda x : indeks
+        ) {
+            if (x.absolutnaWielkoscGwiazdowa > dol && x.absolutnaWielkoscGwiazdowa < gora) {
+                absolutna += x.toString() + "\n" + kreska() + "\n";
+            }
+        }
+        if (!Objects.equals(absolutna, "")) {
+            System.out.println(kreska());
+            System.out.println(naglowek);
+            System.out.println(kreska());
+            System.out.println(absolutna);
+        } else {
+            System.out.println("Nie ma gwiazd z tą masa");
         }
     }
 

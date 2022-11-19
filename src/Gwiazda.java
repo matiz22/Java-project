@@ -1,7 +1,6 @@
 import wartosci.Polkula;
 import execptions.*;
 import wartosci.LiteryGreckie;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,7 +16,6 @@ public class Gwiazda {
     Polkula polkula;
     double masaWSkaliSlonca;
     int temperatura;
-    static Scanner scanner = new Scanner(System.in);
 
     public Gwiazda(String nazwa, String gwiazdozbior, Polkula polkula, double masaWSkaliSlonca, int temperatura, String deklinacja, String rektascensja, double obserwowanaWielkoscGwiazdowa, double absolutnaWielkoscGwiazdowa, LiteryGreckie nazwaKatalogowa
 
@@ -123,7 +121,7 @@ public class Gwiazda {
         boolean loop = true;
         while (loop) {
             try {
-                setNazwa(scanner.next());
+                setNazwa(new Scanner(System.in).nextLine());
                 loop = false;
             } catch (ZlaNazwa e) {
                 System.out.println(e.getMessage());
@@ -133,7 +131,7 @@ public class Gwiazda {
 
     public void insertGwiazdozbior() {
         System.out.println("Podaj gwiazdozbiór: ");
-        gwiazdozbior = scanner.next();
+        gwiazdozbior = new Scanner(System.in).nextLine();
     }
 
     public void insertPolkula() {
@@ -141,7 +139,7 @@ public class Gwiazda {
         boolean loop = true;
         while (loop) {
             try {
-                polkula = Polkula.values()[scanner.nextInt() - 1];
+                polkula = Polkula.values()[new Scanner(System.in).nextInt() - 1];
                 loop = false;
             } catch (Exception e) {
                 System.out.println("Zła wartość");
@@ -154,7 +152,7 @@ public class Gwiazda {
         boolean loop = true;
         while (loop) {
             try {
-                setMasaWSkaliSlonca(scanner.nextDouble());
+                setMasaWSkaliSlonca(new Scanner(System.in).nextDouble());
                 loop = false;
             } catch (ZlaMasaGwiazdy e) {
                 System.out.println(e.getMessage());
@@ -167,7 +165,7 @@ public class Gwiazda {
         boolean loop = true;
         while (loop) {
             try {
-                setTemperatura(scanner.nextInt());
+                setTemperatura(new Scanner(System.in).nextInt());
                 loop = false;
             } catch (ZlaTemperatura e) {
                 System.out.println(e.getMessage());
@@ -182,23 +180,27 @@ public class Gwiazda {
         boolean loop = true;
         while (loop) {
             try {
-                setDeklinacja(scanner.nextLine());
+                setDeklinacja(new Scanner(System.in).nextLine());
                 loop = false;
             } catch (ZlaDeklinacja e) {
                 System.out.println(e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println("Nie podano liczby");
             }
         }
-    } //TODO pierwszy input jest zly
+    }
 
     public void insertRektascensja() {
         System.out.println("Podaj rektascensje, format przykładowych danych: 12 h 30 min 23 ss");
         boolean loop = true;
         while (loop) {
             try {
-                setRektascensja(scanner.nextLine());
+                setRektascensja(new Scanner(System.in).nextLine());
                 loop = false;
             } catch (ZlaRektascensja e) {
                 System.out.println(e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println("Nie podano liczby");
             }
         }
     }
@@ -208,7 +210,7 @@ public class Gwiazda {
         boolean loop = true;
         while (loop) {
             try {
-                setObserwowanaWielkoscGwiazdowa(scanner.nextDouble());
+                setObserwowanaWielkoscGwiazdowa(new Scanner(System.in).nextDouble());
                 loop = false;
             } catch (ZlaObserwowanaWielkoscGwiazdowa e) {
                 System.out.println(e.getMessage());
@@ -223,14 +225,77 @@ public class Gwiazda {
         boolean loop = true;
         while (loop) {
             try {
-                setAbsolutnaWielkoscGwiazdowaILataSwietlne(scanner.nextDouble());
+                setAbsolutnaWielkoscGwiazdowaILataSwietlne(new Scanner(System.in).nextDouble());
                 loop = false;
             } catch (InputMismatchException e) {
                 System.out.println("Oczekiwano liczby zmienno przecinkowej");
             }
         }
     }
+    //Metody potrzebne do serializacji
+    public String getNazwa() {
+        return Nazwa;
+    }
 
+    public LiteryGreckie getNazwaKatalogowa() {
+        return NazwaKatalogowa;
+    }
+
+    public void setNazwaKatalogowa(LiteryGreckie nazwaKatalogowa) {
+        NazwaKatalogowa = nazwaKatalogowa;
+    }
+
+    public int getDeklinacja() {
+        return deklinacja;
+    }
+
+    public void setDeklinacja(int deklinacja) {
+        this.deklinacja = deklinacja;
+    }
+
+    public int getRektascensja() {
+        return rektascensja;
+    }
+
+    public void setRektascensja(int rektascensja) {
+        this.rektascensja = rektascensja;
+    }
+
+    public double getObserwowanaWielkoscGwiazdowa() {
+        return obserwowanaWielkoscGwiazdowa;
+    }
+
+    public double getAbsolutnaWielkoscGwiazdowa() {
+        return absolutnaWielkoscGwiazdowa;
+    }
+
+    public void setAbsolutnaWielkoscGwiazdowa(double absolutnaWielkoscGwiazdowa) {
+        this.absolutnaWielkoscGwiazdowa = absolutnaWielkoscGwiazdowa;
+    }
+
+    public double getLataSwietlne() {
+        return lataSwietlne;
+    }
+
+    public void setLataSwietlne(double lataSwietlne) {
+        this.lataSwietlne = lataSwietlne;
+    }
+
+    public String getGwiazdozbior() {
+        return gwiazdozbior;
+    }
+
+    public Polkula getPolkula() {
+        return polkula;
+    }
+
+    public double getMasaWSkaliSlonca() {
+        return masaWSkaliSlonca;
+    }
+
+    public int getTemperatura() {
+        return temperatura;
+    }
 
     @Override
     public String toString() {

@@ -2,6 +2,7 @@ import execptions.*;
 import wartosci.LiteryGreckie;
 import wartosci.Polkula;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Main {
         indeksGwiazd.indeks.add(new Gwiazda("JCJ2138", "Orzeł", Polkula.PN, 48, 10001, "50 stopni 50 minut 30.30 sekund", "12 h 30 min 23 ss", 14, 8, LiteryGreckie.Chi));
         indeksGwiazd.indeks.add(new Gwiazda("JCJ2137", "Orzeło", Polkula.PD, 50, 24001, "50 stopni 50 minut 30.30 sekund", "12 h 30 min 23 ss", 14, 2, LiteryGreckie.Chi));
         int control = 0;
-        while (control != 12) {
+        while (true) {
             menu();
             try {
                 control = (new Scanner(System.in)).nextInt();
@@ -24,10 +25,10 @@ public class Main {
             }
             switch (control) {
                 case 1:
-                    // jakieś_instrukcje_1;
+                    indeksGwiazd.wczytajZPliku();
                     break;
                 case 2:
-                    // jakieś_instrukcje_2;
+                    indeksGwiazd.zapiszDoPliku();
                     break;
                 case 3:
                     indeksGwiazd.wypisz();
@@ -57,6 +58,9 @@ public class Main {
                     indeksGwiazd.wyszukajPotencjalneSupernowy();
                     break;
                 case 12:
+                    indeksGwiazd.wyszukajPoAbsolutnejWielkosciGwiazdowej();
+                    break;
+                case 13:
                     System.exit(0);
                     break;
                 default:
@@ -78,7 +82,8 @@ public class Main {
         System.out.println("9.Wyszukaj uzywajac parsekow");
         System.out.println("10.Wyszukaj po masie w odniesieniu do slonca");
         System.out.println("11.Wyszukaj potencjalne supernovy");
-        System.out.println("12.Wyjscie");
+        System.out.println("12.Wyszukaj po Absolutnej Wielkości");
+        System.out.println("13.Wyjscie");
 
     }
 }
