@@ -188,7 +188,7 @@ public class Gwiazda {
                 System.out.println(e.getMessage());
             }
         }
-    }
+    } //TODO pierwszy input jest zly
 
     public void insertRektascensja() {
         System.out.println("Podaj rektascensje, format przykładowych danych: 12 h 30 min 23 ss");
@@ -234,9 +234,17 @@ public class Gwiazda {
 
     @Override
     public String toString() {
-        return String.format("|%-10s", Nazwa) + String.format("|%-20s", NazwaKatalogowa) + String.format("|%-20s", gwiazdozbior) + String.format("|%-20s", deklinacja)
-                + String.format("|%-20s", rektascensja) + String.format("|%-35s", obserwowanaWielkoscGwiazdowa) + String.format("|%-35s", absolutnaWielkoscGwiazdowa) + String.format("|%-20s", lataSwietlne)
-                + String.format("|%-10s", polkula) + String.format("|%-20s", masaWSkaliSlonca) + String.format("|%-20s|", temperatura);
+        return String.format("|%-10s", Nazwa)
+                + String.format("|%-20s", NazwaKatalogowa)
+                + String.format("|%-20s", gwiazdozbior)
+                + String.format("|%-20s", deklinacja)
+                + String.format("|%-20s", rektascensja)
+                + String.format("|%-35s", obserwowanaWielkoscGwiazdowa)
+                + String.format("|%-35s", absolutnaWielkoscGwiazdowa)
+                + String.format("|%-20s", lataSwietlne)
+                + String.format("|%-10s", polkula)
+                + String.format("|%-20s", masaWSkaliSlonca)
+                + String.format("|%-20s|", temperatura);
     }
 }
 
