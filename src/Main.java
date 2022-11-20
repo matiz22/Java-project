@@ -9,12 +9,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws ZlaNazwa, ZlaDeklinacja, ZlaRektascensja, ZlaObserwowanaWielkoscGwiazdowa, ZlaTemperatura, ZlaMasaGwiazdy {
         IndeksGwiazd indeksGwiazd = new IndeksGwiazd();
-        Scanner scanner = new Scanner(System.in);
         indeksGwiazd.indeks.add(new Gwiazda("JCJ2138", "Orzeł", Polkula.PN, 0.1, 2001, "50 stopni 50 minut 30.30 sekund", "12 h 30 min 23 ss", 14, 2, LiteryGreckie.Chi));
         indeksGwiazd.indeks.add(new Gwiazda("JCJ2138", "Orzeł", Polkula.PD, 20, 5001, "50 stopni 50 minut 30.30 sekund", "12 h 30 min 23 ss", 14, 2, LiteryGreckie.Chi));
         indeksGwiazd.indeks.add(new Gwiazda("JCJ2138", "Orzeł", Polkula.PN, 48, 10001, "50 stopni 50 minut 30.30 sekund", "12 h 30 min 23 ss", 14, 8, LiteryGreckie.Chi));
         indeksGwiazd.indeks.add(new Gwiazda("JCJ2137", "Orzeło", Polkula.PD, 50, 24001, "50 stopni 50 minut 30.30 sekund", "12 h 30 min 23 ss", 14, 2, LiteryGreckie.Chi));
-        int control = 0;
+        int control;
         while (true) {
             menu();
             try {

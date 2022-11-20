@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Serializacja {
     public static <T> void serializeToXML(T indeksGwiazd) throws IOException {
-        FileOutputStream fos = new FileOutputStream("settings.xml");
+        FileOutputStream fos = new FileOutputStream("xml/Gwiazdy.xml");
         XMLEncoder encoder = new XMLEncoder(fos);
         encoder.setExceptionListener(new ExceptionListener() {
             public void exceptionThrown(Exception e) {
@@ -20,7 +20,7 @@ public class Serializacja {
     }
 
     public static <T> T deserializeFromXML() throws IOException {
-        FileInputStream fis = new FileInputStream("settings.xml");
+        FileInputStream fis = new FileInputStream("xml/Gwiazdy.xml");
         XMLDecoder decoder = new XMLDecoder(fis);
         T indeks = (T) decoder.readObject();
         decoder.close();

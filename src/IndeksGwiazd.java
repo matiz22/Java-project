@@ -2,19 +2,10 @@ import wartosci.LiteryGreckie;
 import wartosci.Polkula;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
-public class IndeksGwiazd implements java.io.Serializable {
-    public ArrayList<Gwiazda> getIndeks() {
-        return indeks;
-    }
 
-    public void setIndeks(ArrayList<Gwiazda> indeks) {
-        this.indeks = indeks;
-    }
+public class IndeksGwiazd {
 
     ArrayList<Gwiazda> indeks = new ArrayList<>();
     static final String naglowek = String.format("|%-10s", "Nazwa")
@@ -44,7 +35,7 @@ public class IndeksGwiazd implements java.io.Serializable {
         try {
             Serializacja.serializeToXML(indeks);
         } catch (IOException e) {
-            System.out.println("dupa");
+            System.out.println("Błąd pliku" + e.toString());
         }
     }
 
@@ -331,6 +322,15 @@ public class IndeksGwiazd implements java.io.Serializable {
             if (suma == 22) break;
         }
         return suma;
+    }
+
+    //metody potrzebne do serializacji
+    public ArrayList<Gwiazda> getIndeks() {
+        return indeks;
+    }
+
+    public void setIndeks(ArrayList<Gwiazda> indeks) {
+        this.indeks = indeks;
     }
 
 }
