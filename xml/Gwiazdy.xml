@@ -7,31 +7,25 @@
      <double>17.494850021680094</double>
     </void>
     <void property="deklinacja">
-     <int>50</int>
+     <int>40</int>
     </void>
     <void property="gwiazdozbior">
-     <string>Orzeł</string>
+     <string>łosia</string>
     </void>
     <void property="lataSwietlne">
      <double>6.52</double>
     </void>
     <void property="masaWSkaliSlonca">
-     <double>0.1</double>
+     <double>2.0</double>
     </void>
     <void property="nazwa">
      <string>JCJ2138</string>
-    </void>
-    <void property="nazwaKatalogowa">
-     <object class="java.lang.Enum" id="LiteryGreckie0" method="valueOf">
-      <class>wartosci.LiteryGreckie</class>
-      <string>Chi</string>
-     </object>
     </void>
     <void property="obserwowanaWielkoscGwiazdowa">
      <double>14.0</double>
     </void>
     <void property="polkula">
-     <object class="java.lang.Enum" id="Polkula0" method="valueOf">
+     <object class="java.lang.Enum" method="valueOf">
       <class>wartosci.Polkula</class>
       <string>PN</string>
      </object>
@@ -40,72 +34,78 @@
      <int>12</int>
     </void>
     <void property="temperatura">
-     <int>2001</int>
+     <int>3999</int>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="Gwiazda">
     <void property="absolutnaWielkoscGwiazdowa">
-     <double>17.494850021680094</double>
+     <double>15.989700043360187</double>
     </void>
     <void property="deklinacja">
-     <int>50</int>
+     <int>-30</int>
     </void>
     <void property="gwiazdozbior">
-     <string>Orzeł</string>
+     <string>łosia</string>
     </void>
     <void property="lataSwietlne">
-     <double>6.52</double>
+     <double>13.04</double>
     </void>
     <void property="masaWSkaliSlonca">
-     <double>20.0</double>
+     <double>2.0</double>
     </void>
     <void property="nazwa">
-     <string>JCJ2138</string>
+     <string>JCJ2139</string>
     </void>
     <void property="nazwaKatalogowa">
-     <object idref="LiteryGreckie0"/>
+     <object class="java.lang.Enum" method="valueOf">
+      <class>wartosci.LiteryGreckie</class>
+      <string>Beta</string>
+     </object>
     </void>
     <void property="obserwowanaWielkoscGwiazdowa">
      <double>14.0</double>
     </void>
     <void property="polkula">
-     <object class="java.lang.Enum" id="Polkula1" method="valueOf">
+     <object class="java.lang.Enum" id="Polkula0" method="valueOf">
       <class>wartosci.Polkula</class>
       <string>PD</string>
      </object>
     </void>
     <void property="rektascensja">
-     <int>12</int>
+     <int>20</int>
     </void>
     <void property="temperatura">
-     <int>5001</int>
+     <int>4000</int>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="Gwiazda">
     <void property="absolutnaWielkoscGwiazdowa">
-     <double>14.484550065040281</double>
+     <double>10.98970004336019</double>
     </void>
     <void property="deklinacja">
-     <int>50</int>
+     <int>-30</int>
     </void>
     <void property="gwiazdozbior">
-     <string>Orzeł</string>
+     <string>łosia</string>
     </void>
     <void property="lataSwietlne">
-     <double>26.08</double>
+     <double>130.39999999999998</double>
     </void>
     <void property="masaWSkaliSlonca">
-     <double>48.0</double>
+     <double>3.0</double>
     </void>
     <void property="nazwa">
-     <string>JCJ2138</string>
+     <string>JCJ2150</string>
     </void>
     <void property="nazwaKatalogowa">
-     <object idref="LiteryGreckie0"/>
+     <object class="java.lang.Enum" method="valueOf">
+      <class>wartosci.LiteryGreckie</class>
+      <string>Gamma</string>
+     </object>
     </void>
     <void property="obserwowanaWielkoscGwiazdowa">
      <double>14.0</double>
@@ -117,44 +117,41 @@
      <int>12</int>
     </void>
     <void property="temperatura">
-     <int>10001</int>
+     <int>2300</int>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="Gwiazda">
     <void property="absolutnaWielkoscGwiazdowa">
-     <double>17.494850021680094</double>
+     <double>15.614393726401687</double>
     </void>
     <void property="deklinacja">
-     <int>50</int>
+     <int>-30</int>
     </void>
     <void property="gwiazdozbior">
-     <string>Orzeło</string>
+     <string>orła</string>
     </void>
     <void property="lataSwietlne">
-     <double>6.52</double>
+     <double>9.78</double>
     </void>
     <void property="masaWSkaliSlonca">
-     <double>50.0</double>
+     <double>2.0</double>
     </void>
     <void property="nazwa">
-     <string>JCJ2137</string>
-    </void>
-    <void property="nazwaKatalogowa">
-     <object idref="LiteryGreckie0"/>
+     <string>KCK7312</string>
     </void>
     <void property="obserwowanaWielkoscGwiazdowa">
-     <double>14.0</double>
+     <double>13.0</double>
     </void>
     <void property="polkula">
-     <object idref="Polkula1"/>
+     <object idref="Polkula0"/>
     </void>
     <void property="rektascensja">
-     <int>12</int>
+     <int>13</int>
     </void>
     <void property="temperatura">
-     <int>24001</int>
+     <int>4000</int>
     </void>
    </object>
   </void>

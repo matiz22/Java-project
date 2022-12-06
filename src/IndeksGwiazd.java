@@ -75,58 +75,42 @@ public class IndeksGwiazd {
         String nazwaDoUsuniecia = (new Scanner(System.in)).nextLine();
         boolean czyUsunieto = false;
         String gwiazdozbior = "";
-        for (Gwiazda x : indeks
+        for (Gwiazda gwiazda : indeks
         ) {
-            if (x.Nazwa.equals(nazwaDoUsuniecia)) {
-                gwiazdozbior = x.gwiazdozbior;
-                indeks.remove(x);
+            if (gwiazda.Nazwa.equals(nazwaDoUsuniecia)) {
+                gwiazdozbior = gwiazda.gwiazdozbior;
+                indeks.remove(gwiazda);
                 czyUsunieto = true;
                 break;
             }
         }
         if (czyUsunieto) {
             System.out.println("Usunieto gwiazde");
-            int a = 0;
-            for (Gwiazda x : indeks
+            int numerWGwiazdozbiorze = 0;
+            for (Gwiazda gwiazda : indeks
             ) {
-                if (x.gwiazdozbior.equals(gwiazdozbior)) {
-                    x.NazwaKatalogowa = LiteryGreckie.values()[a];
-                    a++;
+                if (gwiazda.gwiazdozbior.equals(gwiazdozbior)) {
+                    gwiazda.NazwaKatalogowa = LiteryGreckie.values()[numerWGwiazdozbiorze];
+                    numerWGwiazdozbiorze++;
                 }
             }
         } else System.out.println("Brak podanej gwiazdy");
     }
 
     public void wypisz() {
-        System.out.println(kreska());
-        System.out.println(naglowek);
-        for (Gwiazda x : indeks
-        ) {
-            System.out.println(kreska());
-            System.out.println(x.toString());
-        }
-        System.out.println(kreska());
+        IndeksGwiazd.wypisz(indeks);
     }
 
     public void wyszukaj() {
         System.out.println("Podaj nazwę gwiazdy:");
         String szukanaGwiazda = (new Scanner(System.in)).nextLine();
         String wyszukana = "";
-        for (Gwiazda x : indeks
+        for (Gwiazda gwiazda : indeks
         ) {
-            if (x.Nazwa.equals(szukanaGwiazda)) {
-                wyszukana = x.toString();
+            if (gwiazda.Nazwa.equals(szukanaGwiazda)) {
+                wypisz(gwiazda);
                 break;
             }
-        }
-        if (!Objects.equals(wyszukana, "")) {
-            System.out.println(kreska());
-            System.out.println(naglowek);
-            System.out.println(kreska());
-            System.out.println(wyszukana);
-            System.out.println(kreska());
-        } else {
-            System.out.println("Nie ma takie gwiazdy");
         }
     }
 
@@ -169,21 +153,15 @@ public class IndeksGwiazd {
                 System.out.println("Oczekiwano liczby całkowitej");
             }
         }
-        String temperatura = "";
-        for (Gwiazda x : indeks
+        ArrayList<Gwiazda> wynik = new ArrayList<Gwiazda>();
+        for (Gwiazda gwiazda : indeks
         ) {
-            if (x.temperatura > dol && x.temperatura < gora) {
-                temperatura += x.toString() + "\n" + kreska() + "\n";
+            if (gwiazda.temperatura > dol && gwiazda.temperatura < gora) {
+                wynik.add(gwiazda);
             }
         }
-        if (!Objects.equals(temperatura, "")) {
-            System.out.println(kreska());
-            System.out.println(naglowek);
-            System.out.println(kreska());
-            System.out.println(temperatura);
-        } else {
-            System.out.println("Nie ma gwiazd z tą temperatura");
-        }
+        wypisz(wynik);
+
     }
 
     public void wyszukajMase() {
@@ -226,36 +204,30 @@ public class IndeksGwiazd {
                 System.out.println("Zły wybor");
             }
         }
-        String polkula = "";
-        for (Gwiazda x : indeks
+        ArrayList<Gwiazda> wynik = new ArrayList<Gwiazda>();
+        for (Gwiazda gwiazda : indeks
         ) {
-            if (Polkula.values()[i] == x.polkula) {
-                polkula += x.toString() + "\n" + kreska() + "\n";
+            if (Polkula.values()[i] == gwiazda.polkula) {
+                wynik.add(gwiazda);
             }
         }
-        if (!Objects.equals(polkula, "")) {
-            System.out.println(kreska());
-            System.out.println(naglowek);
-            System.out.println(kreska());
-            System.out.println(polkula);
+        if (!wynik.isEmpty()) {
+            IndeksGwiazd.wypisz(wynik);
         } else {
             System.out.println("Nie ma gwiazd na tej polkuli");
         }
     }
 
     public void wyszukajPotencjalneSupernowy() {
-        String masa = "";
-        for (Gwiazda x : indeks
+        ArrayList<Gwiazda> wynik = new ArrayList<Gwiazda>();
+        for (Gwiazda gwiazda : indeks
         ) {
-            if (x.masaWSkaliSlonca > 1.44) {
-                masa += x.toString() + "\n" + kreska() + "\n";
+            if (gwiazda.masaWSkaliSlonca > 1.44) {
+                wynik.add(gwiazda);
             }
         }
-        if (!Objects.equals(masa, "")) {
-            System.out.println(kreska());
-            System.out.println(naglowek);
-            System.out.println(kreska());
-            System.out.println(masa);
+        if (!wynik.isEmpty()) {
+            wypisz(wynik);
         } else {
             System.out.println("Nie ma gwiazd supernovy");
         }
@@ -276,20 +248,17 @@ public class IndeksGwiazd {
                 System.out.println("Oczekiwano liczby zmienno przecinkowej");
             }
         }
-        String absolutna = "";
-        for (Gwiazda x : indeks
+        ArrayList<Gwiazda> wynik = new ArrayList<Gwiazda>();
+        for (Gwiazda gwiazda : indeks
         ) {
-            if (x.absolutnaWielkoscGwiazdowa > dol && x.absolutnaWielkoscGwiazdowa < gora) {
-                absolutna += x.toString() + "\n" + kreska() + "\n";
+            if (gwiazda.absolutnaWielkoscGwiazdowa > dol && gwiazda.absolutnaWielkoscGwiazdowa < gora) {
+                wynik.add(gwiazda);
             }
         }
-        if (!Objects.equals(absolutna, "")) {
-            System.out.println(kreska());
-            System.out.println(naglowek);
-            System.out.println(kreska());
-            System.out.println(absolutna);
+        if (!wynik.isEmpty()) {
+            wypisz(wynik);
         } else {
-            System.out.println("Nie ma gwiazd z tą masa");
+            System.out.println("Nie ma gwiazd z tą wielkoscia");
         }
     }
 
@@ -313,7 +282,7 @@ public class IndeksGwiazd {
         return suma;
     }
 
-    public static void wypisz(ArrayList<Gwiazda> lista) {
+    private static void wypisz(ArrayList<Gwiazda> lista) {
         System.out.println(kreska());
         System.out.println(naglowek);
         for (Gwiazda x : lista
@@ -321,6 +290,12 @@ public class IndeksGwiazd {
             System.out.println(kreska());
             System.out.println(x.toString());
         }
+        System.out.println(kreska());
+    }
+    private static void wypisz(Gwiazda gwiazda) {
+        System.out.println(kreska());
+        System.out.println(naglowek);
+        System.out.println(gwiazda);
         System.out.println(kreska());
     }
 

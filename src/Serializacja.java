@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Serializacja {
+    // metody używane do serializacji
     public static <T> void serializeToXML(T indeksGwiazd) throws IOException {
         FileOutputStream fos = new FileOutputStream("xml/Gwiazdy.xml");
         XMLEncoder encoder = new XMLEncoder(fos);
