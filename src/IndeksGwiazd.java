@@ -7,7 +7,7 @@ import java.util.*;
 
 public class IndeksGwiazd {
 
-    ArrayList<Gwiazda> indeks = new ArrayList<>();
+    ArrayList<Gwiazda> indeks = new ArrayList<Gwiazda>();
     static final String naglowek = String.format("|%-10s", "Nazwa")
             + String.format("|%-20s", "Nazwa Katalogowa")
             + String.format("|%-20s", "Gwiazdozbior")
@@ -39,7 +39,7 @@ public class IndeksGwiazd {
         }
     }
 
-    public void add() {
+    public void dodaj() {
         Gwiazda gwiazda = new Gwiazda();
         boolean czyZawiera = true;
         while (czyZawiera) {
@@ -70,7 +70,7 @@ public class IndeksGwiazd {
         }
     }
 
-    public void remove() {
+    public void usun() {
         System.out.println("Podaj nazwe gwiazdy do usuniecia:");
         String nazwaDoUsuniecia = (new Scanner(System.in)).nextLine();
         boolean czyUsunieto = false;
@@ -143,21 +143,15 @@ public class IndeksGwiazd {
             }
         }
 
-        String parsek = "";
-        for (Gwiazda x : indeks
+        ArrayList<Gwiazda> wyniki = new ArrayList<Gwiazda>();
+        for (Gwiazda gwiazda : indeks
         ) {
-            if (r * 3.26 == x.lataSwietlne) {
-                parsek += x.toString() + "\n" + kreska() + "\n";
+            if (r * 3.26 == gwiazda.lataSwietlne) {
+                wyniki.add(gwiazda);
             }
         }
-        if (!Objects.equals(parsek, "")) {
-            System.out.println(kreska());
-            System.out.println(naglowek);
-            System.out.println(kreska());
-            System.out.println(parsek);
-        } else {
-            System.out.println("Nie ma gwiazd w tym zasięgu");
-        }
+        IndeksGwiazd.wypisz(wyniki);
+
     }
 
     public void wyszukajTemperatura() {
@@ -207,21 +201,16 @@ public class IndeksGwiazd {
                 System.out.println("Oczekiwano liczby zmienno przecinkowej");
             }
         }
-        String masa = "";
-        for (Gwiazda x : indeks
+        ArrayList<Gwiazda> wyniki = new ArrayList<Gwiazda>();
+        for (Gwiazda gwiazda : indeks
         ) {
-            if (x.masaWSkaliSlonca > dol && x.masaWSkaliSlonca < gora) {
-                masa += x.toString() + "\n" + kreska() + "\n";
+            if (gwiazda.masaWSkaliSlonca > dol && gwiazda.masaWSkaliSlonca < gora) {
+                wyniki.add(gwiazda);
             }
         }
-        if (!Objects.equals(masa, "")) {
-            System.out.println(kreska());
-            System.out.println(naglowek);
-            System.out.println(kreska());
-            System.out.println(masa);
-        } else {
-            System.out.println("Nie ma gwiazd z tą masa");
-        }
+        System.out.println("Gwiazdy spełniajace kryteria");
+        IndeksGwiazd.wypisz(wyniki);
+
     }
 
     public void wyszukjaPolkula() {
@@ -322,6 +311,17 @@ public class IndeksGwiazd {
             if (suma == 22) break;
         }
         return suma;
+    }
+
+    public static void wypisz(ArrayList<Gwiazda> lista) {
+        System.out.println(kreska());
+        System.out.println(naglowek);
+        for (Gwiazda x : lista
+        ) {
+            System.out.println(kreska());
+            System.out.println(x.toString());
+        }
+        System.out.println(kreska());
     }
 
     //metody potrzebne do serializacji

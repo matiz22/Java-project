@@ -31,10 +31,10 @@ public class Main {
                     indeksGwiazd.wypisz();
                     break;
                 case 4:
-                    indeksGwiazd.add();
+                    indeksGwiazd.dodaj();
                     break;
                 case 5:
-                    indeksGwiazd.remove();
+                    indeksGwiazd.usun();
                     break;
                 case 6:
                     indeksGwiazd.wyszukaj();

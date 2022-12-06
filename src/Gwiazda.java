@@ -58,9 +58,7 @@ public class Gwiazda {
     public void setDeklinacja(String wspolrzedne) throws ZlaDeklinacja {
         try {
             deklinacja = Integer.parseInt(wspolrzedne.substring(0, wspolrzedne.indexOf("stopni")).replace(" ", ""));
-        } catch (InputMismatchException e) {
-            throw new ZlaDeklinacja("Niepoprawny format danych");
-        } catch (StringIndexOutOfBoundsException e) {
+        } catch (Exception e) {
             throw new ZlaDeklinacja("Niepoprawny format danych");
         }
         if (deklinacja > 90 || deklinacja < 0) throw new ZlaDeklinacja("Deklinacja nie z zakresu");
@@ -115,7 +113,7 @@ public class Gwiazda {
             this.masaWSkaliSlonca = masaWSkaliSlonca;
         }
     }
-
+    // metody insert uzywaja metod set dla ustawienia parametrow gwiazdy, oblsuguja wyjatki wyrzucane przez metody set
     public void insertNazwa() {
         System.out.println("Podaj nazwę 3 Duże literi i 4 Cyfry np: JCJ2138");
         boolean loop = true;
